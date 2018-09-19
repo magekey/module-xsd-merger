@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageKey. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="adminhtml_cache_flush_system">
+        <observer name="mgk_xsdmerger_clean" instance="MageKey\XsdMerger\Observer\CleanXsdMerger" />
+    </event>
+    <event name="adminhtml_cache_flush_all">
+        <observer name="mgk_xsdmerger_clean" instance="MageKey\XsdMerger\Observer\CleanXsdMerger" />
+    </event>
+</config>

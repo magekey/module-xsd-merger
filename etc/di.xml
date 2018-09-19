@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageKey. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\Config\Dom\UrnResolver">
+        <plugin name="mgk_xsdmerger_urn" type="MageKey\XsdMerger\Plugin\UrnResolver" sortOrder="1" />
+    </type>
+    <type name="MageKey\XsdMerger\Model\UrnSchema\Pool">
+        <arguments>
+            <argument name="sources" xsi:type="array">
+                <item name="page_layout" xsi:type="string">urn:magento:framework:View/Layout/etc/page_layout.xsd</item>
+                <item name="layout_merged" xsi:type="string">urn:magento:framework:View/Layout/etc/layout_merged.xsd</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="MageKey\XsdMerger\Model\XsdMerger\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="converter" xsi:type="object">MageKey\XsdMerger\Model\XsdMerger\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">MageKey\XsdMerger\Model\XsdMerger\Config\SchemaLocator</argument>
+            <argument name="validationState" xsi:type="object">MageKey\XsdMerger\Model\XsdMerger\Config\ValidationState</argument>
+            <argument name="domDocumentClass" xsi:type="string">MageKey\XsdMerger\Model\XsdMerger\Config\Merger</argument>
+        </arguments>
+    </virtualType>
+
+</config>
